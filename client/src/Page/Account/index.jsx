@@ -4,6 +4,7 @@ import { Bell, Order, User } from "../../Assets";
 import { useUser } from "../../Hook/useUserContext";
 import styles from "./Account.module.scss";
 import PopUpAddress from "./PopUpAddress";
+import { getImageUrl } from "../../Api/apiClient";
 
 export default function Account() {
   const { user, setUser } = useUser();
@@ -42,7 +43,7 @@ export default function Account() {
       {/* Sidebar */}
       <div className={`col-3 ${styles.dashBoard}`}>
         <div className={styles.header}>
-          <img src={`http://localhost:5000${user.image}`} alt="" />
+          <img src={getImageUrl(user.image)} alt="" />
           <span className={styles.userName}>{user.name}</span>
         </div>
 

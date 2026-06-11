@@ -1,5 +1,13 @@
 const BASE_URL = "http://localhost:5000";
 
+export const getImageUrl = (imgUrl) => {
+  if (!imgUrl) return "";
+  if (imgUrl.startsWith("http://") || imgUrl.startsWith("https://") || imgUrl.startsWith("data:")) {
+    return imgUrl;
+  }
+  return `${BASE_URL}${imgUrl}`;
+};
+
 export async function apiFetch(path, options = {}, signal = {}) {
   const opts = { ...options };
   const providedHeaders = opts.headers ? { ...opts.headers } : {};

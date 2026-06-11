@@ -1,10 +1,11 @@
 import styles from "./Cart.module.scss";
+import { getImageUrl } from "../../Api/apiClient";
 
 export default function CartItem({ item }) {
   return (
     <div className={styles.CartItemWrapper}>
       <div className={styles.left}>
-        <img src={`http://localhost:5000${item.product.image}`} alt="" />
+        <img src={getImageUrl(item.product.image)} alt="" />
         {item.product.name}
       </div>
       <div className={styles.right}>

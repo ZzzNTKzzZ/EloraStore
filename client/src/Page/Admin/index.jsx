@@ -3,6 +3,7 @@ import { useUser } from "../../Hook/useUserContext";
 import styles from "./Admin.module.scss";
 import { DashBoard, Delivery, Product, User } from "../../Assets";
 import { useEffect, useState } from "react";
+import { getImageUrl } from "../../Api/apiClient";
 
 export default function Admin() {
   const { user, loadingUser } = useUser();
@@ -61,7 +62,7 @@ export default function Admin() {
     <div className={`${styles.wrapper}`}>
       <nav>
         <div className={styles.header}>
-          <img src={`http://localhost:5000${user.image}`} alt="" />
+          <img src={getImageUrl(user.image)} alt="" />
           <span className={styles.userName}>{user.name}</span>
         </div>
       </nav>

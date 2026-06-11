@@ -5,6 +5,7 @@ import { Arrow, Cross } from "../../Assets";
 import useClickOutside from "../../Hook/useClickOutSide";
 import QuantitySelector from "../ProductDetail/Quantity";
 import VariantSelectorPopup from "./VariantSelectorPopup";
+import { getImageUrl } from "../../Api/apiClient";
 export default function CartRow({ product, isChecked, onToggleItem }) {
   const { updateCart, removeFromCart } = useCart();
 
@@ -66,7 +67,7 @@ const isFirstRender = useRef(true);
         {/* Product Info */}
         <div className={styles.product}>
           <div className={styles.img}>
-            <img src={`http://localhost:5000${image}`} alt={name} />
+            <img src={getImageUrl(image)} alt={name} />
           </div>
           <p className={styles.name}>{name}</p>
         </div>

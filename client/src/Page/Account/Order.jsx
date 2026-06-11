@@ -5,6 +5,7 @@ import { useUser } from "../../Hook/useUserContext";
 import Button from "../../Components/Button";
 import { useCart } from "../../Hook/useCartContext";
 import { getOrder } from "../../Api/orderApi";
+import { getImageUrl } from "../../Api/apiClient";
 
 function ListOrder({ listOrder = [], loadingOrder }) {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ function ListOrder({ listOrder = [], loadingOrder }) {
                   </Link>
                   <div className={styles.item}>
                     <img
-                      src={`http://localhost:5000${item.product.image}`}
+                      src={getImageUrl(item.product.image)}
                       alt=""
                     />
                     <span className={styles.info}>

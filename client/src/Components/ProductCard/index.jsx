@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Tag from "../Tag";
 import styles from "./ProductCard.module.scss";
+import { getImageUrl } from "../../Api/apiClient";
 
 export default function ProductCard({ product, ...passProps }) {
   const { name, price, sale, tags, slug, image, sold } = product;
@@ -13,7 +14,7 @@ export default function ProductCard({ product, ...passProps }) {
       {...passProps}
     >
       <div className={styles.background}>
-        <img src={`http://localhost:5000${image}`} alt="alt image" />
+        <img src={getImageUrl(image)} alt="alt image" />
         <div className={styles.des}>
           <p className={styles.name}>{name}</p>
           <div className={styles.tags}>

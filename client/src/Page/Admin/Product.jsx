@@ -9,6 +9,7 @@ import { searchProduct } from "../../Api/productApi";
 import { useSearchParams } from "react-router-dom";
 import PopUpProduct from "./Components/PopUpProduct";
 import InputSearch from "../../Components/InputSearch";
+import { getImageUrl } from "../../Api/apiClient";
 
 export default function Product() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -129,7 +130,7 @@ export default function Product() {
                   <div className={styles.tableRow} key={product._id}>
                     <div className={styles.info}>
                       <img
-                        src={`http://localhost:5000${product.image}`}
+                        src={getImageUrl(product.image)}
                         alt="alt image"
                       />
                       <p className={styles.name}>{product.name}</p>
@@ -166,7 +167,7 @@ export default function Product() {
                   <div className={styles.tableRow} key={product._id}>
                     <div className={styles.info}>
                       <img
-                        src={`http://localhost:5000${product.image}`}
+                        src={getImageUrl(product.image)}
                         alt="alt image"
                       />
                       <p className={styles.name}>{product.name}</p>

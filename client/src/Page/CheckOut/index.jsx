@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { createCheckout } from "../../Api/orderApi";
 import { deleteItemFromCart } from "../../Api/cartApi";
 import { useCart } from "../../Hook/useCartContext";
+import { getImageUrl } from "../../Api/apiClient";
 
 /* ================= CHECKOUT ITEM ================= */
 
@@ -21,7 +22,7 @@ function CheckOutItem({ item }) {
     <section className={styles.checkoutItem}>
       <div className={styles.product}>
         <div className={styles.image}>
-          <img src={`http://localhost:5000${item.product.image}`} alt="" />
+          <img src={getImageUrl(item.product.image)} alt="" />
         </div>
         <p className={styles.productName}>{item.product.name}</p>
       </div>

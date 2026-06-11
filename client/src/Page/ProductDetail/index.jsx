@@ -5,6 +5,7 @@ import { useCart } from "../../Hook/useCartContext";
 import { useCheckOut } from "../../Hook/useCheckOutContext";
 import { useUser } from "../../Hook/useUserContext";
 import * as productApi from "../../Api/productApi";
+import { getImageUrl } from "../../Api/apiClient";
 
 
 import Button from "../../Components/Button";
@@ -126,7 +127,7 @@ export default function ProductDetail() {
         <div className={`${styles.gallery} col-5`}>
           <div className={styles.mainImage}>
             <img
-              src={`http://localhost:5000${product.image}`}
+              src={getImageUrl(product.image)}
               alt={product.name}
             />
           </div>
