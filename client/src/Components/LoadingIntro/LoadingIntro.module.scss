@@ -1,0 +1,70 @@
+@import "../../Styles/variable";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0f11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.fadeOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  animation: logoPulse 1.5s ease-in-out infinite alternate;
+}
+
+.progressBar {
+  width: 160px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ef4444, #f59e0b);
+  animation: loadProgress 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes logoPulse {
+  0% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.05));
+  }
+  100% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.2));
+  }
+}
+
+@keyframes loadProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

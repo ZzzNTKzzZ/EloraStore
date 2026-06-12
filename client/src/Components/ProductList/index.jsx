@@ -5,6 +5,7 @@ import ProductCard from "../ProductCard";
 import { Arrow } from "../../Assets";
 import Pagination from "../Pagination";
 import { useEffect } from "react";
+import { BASE_URL } from "../../Api/apiClient";
 
 export default function ProductList() {
   const listCategory = [
@@ -27,7 +28,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/products/");
+        const res = await fetch(`${BASE_URL}/products/`);
         const data = await res.json();
         setTotalIndex(Math.ceil(data.length / 4));
         setProducts(data.data);

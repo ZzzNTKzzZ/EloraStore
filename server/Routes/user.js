@@ -4,7 +4,7 @@ import multer from "multer";
 import fs from "fs"
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dir = "uploads/avatar";
+    const dir = (process.env.FIREBASE_CONFIG || process.env.VERCEL) ? "/tmp/uploads/avatar" : "uploads/avatar";
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },

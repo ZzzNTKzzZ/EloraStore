@@ -3,6 +3,7 @@ import styles from "./componentAdmin.module.scss";
 import { createProduct } from "../../../Api/productApi";
 import useClickOutside from "../../../Hook/useClickOutSide";
 import Button from "../../../Components/Button";
+import { BASE_URL } from "../../../Api/apiClient";
 export default function PopUpPorudct({ open, setOpen, product }) {
   const [formData, setFormData] = useState({
     name: product.name || "",
@@ -27,7 +28,7 @@ export default function PopUpPorudct({ open, setOpen, product }) {
   useEffect(() => {
     const loadCategories = async () => {
       try {
-        const res = await fetch("http://localhost:5000/category");
+        const res = await fetch(`${BASE_URL}/category`);
         const data = await res.json();
         setCategories(data);
       } catch (error) {

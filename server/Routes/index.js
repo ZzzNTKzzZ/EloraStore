@@ -6,12 +6,12 @@ import routerCategory from "./category.js"
 import routerCart from "./cart.js"
 
 export default function routes(app) {
-    app.get("/", (req, res) => {
+    app.get("/server", (req, res) => {
         res.render("home")
     })
-    app.use("/products", routerProduct)
-    app.use("/order", routerOrder)
-    app.use("/user", routerUser)
-    app.use("/category", routerCategory)
-    app.use("/cart", routerCart)
+    app.use("/server/products", routerProduct)
+    app.use("/server/order", routerOrder)
+    app.use("/server/user", routerUser)
+    app.use("/server/category", routerCategory)
+    app.use("/server/cart", routerCart)
 } 

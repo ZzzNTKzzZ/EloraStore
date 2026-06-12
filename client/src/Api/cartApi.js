@@ -1,5 +1,7 @@
+import { BASE_URL } from "./apiClient";
+
 export async function getCart(cartId) {
-  const res = await fetch(`http://localhost:5000/cart/${cartId}`);
+  const res = await fetch(`${BASE_URL}/cart/${cartId}`);
 
   if (!res.ok) throw new Error("Failed to get cart ");
   return res.json(); // expected: { cart: { _id, items: [...] } }
@@ -7,7 +9,7 @@ export async function getCart(cartId) {
 
 export async function addItemToCart(cartId, { productId, variants, quantity }) {
   const payload = { productId, variants, quantity };
-  const res = await fetch(`http://localhost:5000/cart/${cartId}/items`, {
+  const res = await fetch(`${BASE_URL}/cart/${cartId}/items`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -18,7 +20,7 @@ export async function addItemToCart(cartId, { productId, variants, quantity }) {
 
 export async function deleteItemFromCart(cartId, { productId, variants }) {
   const payload = { productId, variants}
-  const res = await fetch(`http://localhost:5000/cart/${cartId}/items`, {
+  const res = await fetch(`${BASE_URL}/cart/${cartId}/items`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify( payload ),
@@ -30,7 +32,7 @@ export async function deleteItemFromCart(cartId, { productId, variants }) {
 
 export async function updateItemFromCart(cartId, { productId, variants, oldVariants, quantity } ) {
   const payload = { productId ,variants, oldVariants, quantity };
-  const res = await fetch(`http://localhost:5000/cart/${cartId}/items`, {
+  const res = await fetch(`${BASE_URL}/cart/${cartId}/items`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify( payload ),

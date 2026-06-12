@@ -26,6 +26,8 @@ import DashBoard from "./Page/Admin/DashBoard";
 import User from "./Page/Admin/User";
 import Product from "./Page/Admin/Product";
 import OrderAdmin from "./Page/Admin/Order";
+import { useEffect } from "react";
+import LoadingIntro from "./Components/LoadingIntro";
 
 function AppProvider({ children }) {
   return (
@@ -50,9 +52,15 @@ function Layout() {
 }
 
 export default function App() {
+  useEffect(() => {
+    document.title = "Elora Store — Modern Clothing E-Commerce Platform";
+  }, []);
+
   return (
-    <BrowserRouter>
-      <AppProvider>
+    <>
+      <LoadingIntro />
+      <BrowserRouter>
+        <AppProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -85,5 +93,6 @@ export default function App() {
         </Routes>
       </AppProvider>
     </BrowserRouter>
+    </>
   );
 }

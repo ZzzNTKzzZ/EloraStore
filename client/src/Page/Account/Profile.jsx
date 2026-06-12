@@ -3,6 +3,7 @@ import { useUser } from "../../Hook/useUserContext";
 import styles from "./Account.module.scss";
 import Button from "../../Components/Button";
 import { AltImage } from "../../Assets";
+import { BASE_URL } from "../../Api/apiClient";
 export default function Profile() {
   const { user, setUser } = useUser();
 
@@ -20,7 +21,7 @@ export default function Profile() {
       formData.append("phone",phone);
       formData.append("dob",dob);
       formData.append("image", file)
-      const res = await fetch(`http://localhost:5000/user/edit/${user._id}`, {
+      const res = await fetch(`${BASE_URL}/user/edit/${user._id}`, {
         method: "PATCH",
         body: formData,
       });

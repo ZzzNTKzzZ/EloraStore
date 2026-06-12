@@ -8,6 +8,8 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import useProducts from "../../Hook/useProduct.js";
 import Pagination from "../../Components/Pagination/index.jsx";
 
+import { BASE_URL } from "../../Api/apiClient.js";
+
 export default function Shop() {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,10 +46,8 @@ export default function Shop() {
   });
 
   // fetch categories
-  // TODO (line ~60): replace inline `fetch("http://localhost:5000/category")`
-  // with a centralized API helper (`client/src/Api/productApi.js`) and base URL.
   useEffect(() => {
-    fetch("http://localhost:5000/category")
+    fetch(`${BASE_URL}/category`)
       .then((res) => res.json())
       .then((data) => setOptions({ category: data }));
   }, []);

@@ -6,6 +6,7 @@ import Button from "../../Components/Button";
 import Breadcrumb from "../../Components/BreadCrumb";
 import Pagination from "../../Components/Pagination";
 import { useSearchParams } from "react-router-dom";
+import { BASE_URL } from "../../Api/apiClient";
 
 export default function User() {
   const [users, setUsers] = useState([]);
@@ -18,7 +19,7 @@ export default function User() {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const resUsers = await fetch("http://localhost:5000/user");
+        const resUsers = await fetch(`${BASE_URL}/user`);
         const dataUsers = await resUsers.json();
         setUsers(dataUsers || []);
       } catch (err) {

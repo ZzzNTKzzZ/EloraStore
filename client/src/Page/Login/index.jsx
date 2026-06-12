@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button";
 import { useUser } from "../../Hook/useUserContext";
 import Input from "../../Components/Input";
+import { BASE_URL } from "../../Api/apiClient.js";
 
 function SignUpBox({ onSuccess }) {
   const { setUser } = useUser();
@@ -25,7 +26,7 @@ function SignUpBox({ onSuccess }) {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/user/signUp", {
+      const res = await fetch(`${BASE_URL}/user/signUp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -107,7 +108,7 @@ function LogInBox() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/user/login", {
+      const res = await fetch(`${BASE_URL}/user/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

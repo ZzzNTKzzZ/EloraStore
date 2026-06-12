@@ -3,7 +3,7 @@ import { useUser } from "../../Hook/useUserContext";
 import styles from "./Admin.module.scss";
 import { DashBoard, Delivery, Product, User } from "../../Assets";
 import { useEffect, useState } from "react";
-import { getImageUrl } from "../../Api/apiClient";
+import { getImageUrl, BASE_URL } from "../../Api/apiClient";
 
 export default function Admin() {
   const { user, loadingUser } = useUser();
@@ -19,12 +19,12 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchGeneral = async () => {
-      const resUser = await fetch("http://localhost:5000/user");
-      const resOrder = await fetch("http://localhost:5000/order");
+      const resUser = await fetch(`${BASE_URL}/user`);
+      const resOrder = await fetch(`${BASE_URL}/order`);
       const resBestSeller = await fetch(
-        "http://localhost:5000/products/bestSeller"
+        `${BASE_URL}/products/bestSeller`
       );
-      const resLatestOrder = await fetch("http://localhost:5000/order/latest");
+      const resLatestOrder = await fetch(`${BASE_URL}/order/latest`);
 
       const dataUser = await resUser.json();
       const dataOrder = await resOrder.json();

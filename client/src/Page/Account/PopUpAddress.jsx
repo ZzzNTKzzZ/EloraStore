@@ -3,6 +3,7 @@ import { useState } from "react";
 import InputSelect from "../../Components/InputSelect";
 import Button from "../../Components/Button";
 import styles from "./Account.module.scss";
+import { BASE_URL } from "../../Api/apiClient";
 
 export default function PopUpAddress({ closePopup, user, setUser }) {
   const [city, setCity] = useState({});
@@ -15,7 +16,7 @@ export default function PopUpAddress({ closePopup, user, setUser }) {
       if (city.name.trim() === "" && ward.ward_name.trim() === "") return;
       const fetchApi = async () => {
         const res = await fetch(
-          `http://localhost:5000/user/edit/address/${user._id}`,
+          `${BASE_URL}/user/edit/address/${user._id}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

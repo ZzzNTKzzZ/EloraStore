@@ -1,9 +1,13 @@
 import express from "express"
-import ProductController from "../controllers/ProductController.js";
+import ProductController from "../Controllers/ProductController.js";
 import multer from "multer";
+import fs from "fs";
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/products"); // Lưu vào thư mục uploads
+    const dir = (process.env.FIREBASE_CONFIG || process.env.VERCEL) ? "/tmp/uploads/products" : "uploads/products";
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
